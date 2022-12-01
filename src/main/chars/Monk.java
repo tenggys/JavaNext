@@ -1,11 +1,14 @@
+package chars;
+
 public class Monk extends Unit {
 
     private boolean magic;
 
-    public Monk(List<Unit> gang) {
+    public Monk(List<Unit> gang, int x, int y) {
         super( attack: 12, protect: 7, new int[]{-4, -4}, health: 30, speed: 5, state: "Stand");
         magic = true;
-        super.gang = ganf;
+        super.gang = gang;
+        super.position = new Vector2(x, y);
     }
 
     @Override
