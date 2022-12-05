@@ -17,12 +17,23 @@ public class Main {
         Scanner = new Scanner(System.in);
 
         while (true){
-            ConsoleView.View();
-
-            whiteSide.forEach(n -> n.step(darkSide)));
-            darkSide.forEach(n -> n.step(darkSide(whiteSide)));
+            ConsoleView.view();
+            turnMove();
             scanner.nextLine();
         }
+    }
+
+    private  static void turnMove(){
+        List<Unit> sortSide = new ArrayList<>();
+        sortSide.addAll(blueSide);
+        sortSide.addAll(greenSide);
+        sortSide.sotr(new Comporator<Unit>(){
+            public int compare(Unit o1, Unit o2){
+                int tmp = o2.getSpeed() - o1.getSpeed();
+                return tmp;
+            }
+        });
+        sortSide.forEach(Unit::step);
     }
 
     private static void init(){
@@ -33,20 +44,20 @@ public class Main {
         int y = 1;
         for (int i = 0; i < GABG_SIZE; i++) {
             switch (new Random().nextInt(4)) {
-                case 0: whiteSide.add(new Peasant(whiteSide, x, y++));break;
-                case 1: whiteSide.add(new Robber(whiteSide, x, y++));break;
-                case 2: whiteSide.add(new Sniper(whiteSide, x, y++));break;
-                default: whiteSide.add(new Monk(whiteSide, x, y++));break;
+                case 0: whiteSide.add(new Peasant(whiteSide, darkSide, x, y++));break;
+                case 1: whiteSide.add(new Robber(whiteSide, darkSide, x, y++));break;
+                case 2: whiteSide.add(new Sniper(whiteSide, darkSide, x, y++));break;
+                default: whiteSide.add(new Monk(whiteSide, darkSide, x, y++));break;
             }
 
             x = 10;
             y = 1;
             for (int i = 0; i < GABG_SIZE; i++){
                 switch (new Random().nextInt(4)){
-                    case 0: darkSide.add(new Peasant(darkSide, x, y++));break;
-                    case 1: darkSide.add(new Spearman(darkSide, x, y++));break;
-                    case 2: darkSide.add(new Xbowman(darkSide, x, y++));break;
-                    default: darkSide.add(new Wizard(darkSide, x, y++));break;
+                    case 0: darkSide.add(new Peasant(darkSide, whiteSide, x, y++));break;
+                    case 1: darkSide.add(new Spearman(darkSide, whiteSide, x, y++));break;
+                    case 2: darkSide.add(new Xbowman(darkSide, whiteSide, x, y++));break;
+                    default: darkSide.add(new Wizard(darkSide, whiteSide, x, y++));break;
                 }
             }
         }

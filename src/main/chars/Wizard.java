@@ -4,11 +4,12 @@ public class Wizard extends Unit {
 
     private boolean magic;
 
-    public Wizard(List<Unit> gang, int x, int y) {
+    public Wizard(List<Unit> gang, List<Unit> side, int x, int y) {
         super( attack: 17, protect: 12, new int[]{-5, -5}, health: 30, speed: 9, state: "Stand");
         magic = true;
         super.gang = gang;
         super.position = new Vector2(x, y);
+        super.side = side;
     }
 
     @Override

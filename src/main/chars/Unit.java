@@ -7,9 +7,10 @@ public abstract class Unit implements UnitInterface {
     protected float health;
     protected final float maxHealth;
     protected int speed;
+    protected String action;
     protected String state;
 
-    protected List<Unit> gang;
+    protected List<Unit> gang, side;
     protected Vector2 position;
 
 
@@ -22,10 +23,41 @@ public abstract class Unit implements UnitInterface {
         this.speed = speed;
         this.state = state;
         this.name = name;
+        this.actiom = "Стоит";
     }
 
     public String getName() {
         return Name;
+    }
+
+    public void setAction(String action){
+        this.action = action;
+    }
+
+    public String getAction(String action){
+        return action;
+    }
+
+    public int getSpeed(){
+        return speed;
+    }
+
+    public float calcDamage(Unit unit){
+        if (unit.protection - this.attack == 0){
+            return (this.damage[0] + this.damage[1]) / 2.0f;
+        }
+        if (unit.protection - this.attack < 0){
+            return this.damage[1];
+        }
+        return this.damage[0];
+    }
+
+    public void getHit(float damage){
+        this.health -= damage;
+        if (this.health <= 0){
+            this.health = 0;
+            this.action = "Мертв";
+        }
     }
 
     g
@@ -35,19 +67,19 @@ public abstract class Unit implements UnitInterface {
 
     @Override
     public String getInfo() {
-        return "А:" + attack + ", З:" + protect + ", У:" + (damage[0] + damage[1]) / 2 + ", Зд:" + health + ", С:" + speed;
+        return "А:" + attack + ", З:" + protect + ", У:" + (damage[0] + damage[1]) / 2 + ", Зд:" + health + ", С:" + speed + ", " + action;
     }
 
     @Override
-    public void step(List<Base> gang) {
-        int index = 0;
-        float dist = Float.MAX_VALUE;
-        for (int i = 0; i < ; i++) {
-            if (....){
-                index = i;
-                dist = ...
-            }
-        }
-        position.x++;
+    public void step(List<Unit> gang) {
+//        int index = 0;
+//        float dist = Float.MAX_VALUE;
+//        for (int i = 0; i < ; i++) {
+//            if (....){
+//                index = i;
+//                dist = ...
+//            }
+//        }
+//        position.x++;
     }
 }
