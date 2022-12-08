@@ -9,6 +9,7 @@ public class Sniper extends Unit {
         shoots = 32;
         super.position = new Vector2(x, y);
         super.side = side;
+        quantity = new Random().nextInt(2, 8);
     }
 
     public void step(List<Unit> side) {

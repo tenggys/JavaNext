@@ -10,6 +10,7 @@ public class Xbowman extends Unit{
         super.gang = gang;
         super.position = new Vector2(x, y);
         super.side = side;
+        quantity = new Random().nextInt(5, 8);
     }
 
     public void step() {

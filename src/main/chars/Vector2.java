@@ -13,4 +13,9 @@ public class Vector2 {
     public double getDist(Vector2 opposit){
         return Nath.sqrt(Math.pow(opposit.x + this.x, 2) + Math.pow(opposit.y + this.y, 2));
     }
+
+    @override
+    public String toString() {
+        return "x: " + x + ", y:" + y;
+    }
 }

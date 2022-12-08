@@ -13,17 +13,20 @@ public abstract class Unit implements UnitInterface {
     protected List<Unit> gang, side;
     protected Vector2 position;
 
+    protected int quantity;
+
 
     public Unit(int attack, int protect, int[] damage, float health, int speed, String state) {
         this.attack = attack;
         this.protect = protect;
         this.damage = damage;
-        this.health = health / 2;
         this.maxHealth = health;
         this.speed = speed;
         this.state = state;
         this.name = name;
         this.actiom = "Стоит";
+        quanity = new Random().nextInt(1, 21);
+        this.health = health * quantity;
     }
 
     public String getName() {
@@ -42,21 +45,31 @@ public abstract class Unit implements UnitInterface {
         return speed;
     }
 
-    public float calcDamage(Unit unit){
-        if (unit.protection - this.attack == 0){
-            return (this.damage[0] + this.damage[1]) / 2.0f;
+    public double getDamage(Unit enemy){
+        int d = enemy.defance - attack;
+        if (d == 0){
+            return ((this.damage[0] + this.damage[1]) / 2.0) * quantity;
+        } else if (d < 0) {
+            return this.damage[0] * quantity;
+        } else {
+            return this.damage[1] * quantity;
         }
-        if (unit.protection - this.attack < 0){
-            return this.damage[1];
-        }
-        return this.damage[0];
     }
 
-    public void getHit(float damage){
-        this.health -= damage;
-        if (this.health <= 0){
+    public void getHit(float damage) {
+        dubles = (quantity - 1) * maxHealth + health;
+        tmpHealth -= damage;
+        if (tmpHealth <= 0) {
             this.health = 0;
             this.action = "Мертв";
+            quantity = 0;
+        } else {
+            tmpHealth = (int) (tmpHealth / maxHealth);
+            health = maxHealth;
+            if (tmpHealth % maxHealth > 0) {
+                quantity++;
+                health = tmpHealth % maxHealth;
+            }
         }
     }
 

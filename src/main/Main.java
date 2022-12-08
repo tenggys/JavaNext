@@ -47,7 +47,7 @@ public class Main {
                 case 0: whiteSide.add(new Peasant(whiteSide, darkSide, x, y++));break;
                 case 1: whiteSide.add(new Robber(whiteSide, darkSide, x, y++));break;
                 case 2: whiteSide.add(new Sniper(whiteSide, darkSide, x, y++));break;
-                default: whiteSide.add(new Monk(whiteSide, darkSide, x, y++));break;
+                    default: whiteSide.add(new Monk(whiteSide, darkSide, x, y++));break;
             }
 
             x = 10;
@@ -62,4 +62,15 @@ public class Main {
             }
         }
     }
+
+//    class Foo extends Vector2 {
+//        public Foo(int x, int y) {
+//            super(x, y);
+//        }
+
+//        private void f () {
+//            Foo foo = new Foo(1, 2);
+//            foo.
+//        }
+//    }
 }
