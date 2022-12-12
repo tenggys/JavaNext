@@ -42,7 +42,7 @@ public class Robber extends Unit {
                     newPos.x = position.x + 1;
                     if (enemyPos.y - position.y > 0) {
                         newPos.y = position.y - 1;
-                   } else {
+                    } else {
                         newPos.y = position.y - 1;
                     }
                 }
