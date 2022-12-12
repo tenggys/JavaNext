@@ -20,6 +20,8 @@ public class Main {
             ConsoleView.view();
             turnMove();
             scanner.nextLine();
+            System.out.println(leftGang.size());
+            System.out.println(rightGang.size());
         }
     }
 
