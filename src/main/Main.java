@@ -49,7 +49,7 @@ public class Main {
                 case 0: whiteSide.add(new Peasant(whiteSide, darkSide, x, y++));break;
                 case 1: whiteSide.add(new Robber(whiteSide, darkSide, x, y++));break;
                 case 2: whiteSide.add(new Sniper(whiteSide, darkSide, x, y++));break;
-                    default: whiteSide.add(new Monk(whiteSide, darkSide, x, y++));break;
+                default: whiteSide.add(new Monk(whiteSide, darkSide, x, y++));break;
             }
 
             x = 10;

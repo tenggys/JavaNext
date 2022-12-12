@@ -44,3 +44,4 @@ public class Xbowman extends Unit{
         return "Арбалетчик " + super.getInfo() + ", выстрелы: " + shots + ", " + state;
     }
 }
+

@@ -19,3 +19,4 @@ public class Vector2 {
         return "x: " + x + ", y:" + y;
     }
 }
+
