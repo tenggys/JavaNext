@@ -1,0 +1,6 @@
+com/mygdx/game/MyAnim.java
+ com.mygdx.game.MyAnim
+com/mygdx/game/Hero.java
+ com.mygdx.game.Hero
+com/mygdx/game/MyGdxGame.java
+ com.mygdx.game.MyGdxGame
